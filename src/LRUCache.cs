@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace LRUCache
 {
-    public class Cache
+    public class LRUCache
     {
         private ILogger _logger;
         private LRULinkedList _nodes;
@@ -11,7 +11,7 @@ namespace LRUCache
 
         public int MaxSize { get => _size; }
 
-        public Cache(int size, ILogger logger){
+        public LRUCache(int size, ILogger logger){
             _nodes = new LRULinkedList(logger);
             _hash = new Dictionary<string, Node>();
             _size = size;
@@ -32,7 +32,7 @@ namespace LRUCache
             return null;
         }
 
-        public void Set(string key, string value)
+        public void Put(string key, string value)
         {
             if(_hash.ContainsKey(key)){
                 var node = _hash[key];
